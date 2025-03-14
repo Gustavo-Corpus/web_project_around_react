@@ -1,12 +1,45 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Around The U.S. - Proyecto React  
+  
+## Descripción  
+  
+Este proyecto es una migración de la aplicación "Around The U.S." de JavaScript vanilla a React. La aplicación permite a los usuarios compartir y gestionar fotos de diferentes lugares, con funcionalidades como edición de perfil, gestión de imágenes y sistema de likes.  
+  
+## Características Principales  
+  
+- Edición de perfil de usuario  
+- Actualización de avatar  
+- Agregar/eliminar tarjetas de lugares  
+- Visualización de imágenes en modo popup  
+- Diseño totalmente responsivo  
+- Formularios con validación  
+- Interacción con popups modales  
+  
+## Tecnologías y Técnicas Utilizadas  
+  
+### Lenguajes y Frameworks  
+- React  
+- JavaScript (ES6+)  
+- HTML5  
+- CSS3  
+  
+### Herramientas de Desarrollo  
+- Vite (Build ability)  
+- Visual Studio Code  
+- Git y GitHub  
+- Figma (Diseño)  
+- npm (Gestión de paquetes)  
+  
+### Metodologías y Patrones  
+- Componentes funcionales de React  
+- Hooks de React (useState)  
+- Metodología BEM para CSS  
+- Diseño responsivo con Media Queries  
+- Principios de diseño modular  
+  
+## Mejoras Implementadas en la Versión React  
+  
+- Componentización del código para mejor mantenibilidad  
+- Gestión de estado con React Hooks  
+- Reutilización de componentes (como el Popup)  
+- Mejor organización del código con una estructura de carpetas clara  
+- Implementación de props para comunicación entre componentes
