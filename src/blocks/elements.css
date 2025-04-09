@@ -79,6 +79,10 @@
   opacity: 0.5;
 }
 
+.elements__item-like_active {
+  background-image: url("../images/like-active.svg");
+}
+
 @media screen and (max-width: 768px) {
   .elements {
     grid-template-columns: repeat(2, 1fr);
