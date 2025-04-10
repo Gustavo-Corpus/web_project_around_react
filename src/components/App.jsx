@@ -29,6 +29,15 @@ function App() {
     })();
   };
 
+  const handleUpdateAvatar = (avatarLink) => {  
+    api.setUserAvatar(avatarLink)  
+      .then((updatedUser) => {  
+        setCurrentUser(updatedUser);  
+        handleClosePopup();  
+      })  
+      .catch((error) => console.error(error));  
+  };
+
   async function handleCardLike(card) {
     // Verifica una vez más si a esta tarjeta ya les has dado like
     const isLiked = card.isLiked;
@@ -47,10 +56,18 @@ function App() {
   const handleAddPlaceSubmit = (data) => {    
     api.addCard(data)    
       .then((newCard) => {    
-        setCards([newCard, ...cards]); // La nueva tarjeta ya viene con la estructura correcta  
+        setCards([newCard, ...cards]);
         handleClosePopup();    
       })    
       .catch((error) => console.error(error));    
+};
+
+const handleCardDelete = (cardId) => {
+  api.deleteCard(cardId)
+    .then(() => {
+      setCards((cards) => cards.filter((card) => card._id !== cardId));
+    })
+    .catch((error) => console.error(error));
 };
 
   const handleOpenPopup = (popupData) => {
@@ -62,7 +79,7 @@ function App() {
   };
 
   return (
-    <CurrentUserContext.Provider value={{ currentUser, handleUpdateUser }}>
+    <CurrentUserContext.Provider value={{ currentUser, handleUpdateUser, handleUpdateAvatar }}>
       <div className='page__content'>
         <Header />
         <Main
@@ -71,7 +88,8 @@ function App() {
           popup={popup}
           cards={cards}
           onCardLike={handleCardLike}
-          onAddPlace={handleAddPlaceSubmit}
+          handleAddPlaceSubmit={handleAddPlaceSubmit}
+          onCardDelete={handleCardDelete}
         />
         <Footer />
       </div>

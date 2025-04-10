@@ -3,12 +3,14 @@ import likeIcon from "../../../../images/like.svg";
 import CurrentUserContext from "../../../../contexts/CurrentUserContext";
 
 function Card({ card, handleOpenPopup, onCardLike, onCardDelete }) {
+  const { currentUser } = useContext(CurrentUserContext);
+
   function handleLikeClick() {  
     onCardLike(card);  
   }  
   
   function handleDeleteClick() {  
-    onCardDelete(card);  
+    onCardDelete(card._id);  
   }
 
   return (  

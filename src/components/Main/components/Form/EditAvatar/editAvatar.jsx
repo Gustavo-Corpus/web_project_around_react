@@ -1,17 +1,26 @@
-import { useRef, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import CurrentUserContext from '../../../../../contexts/CurrentUserContext';
 
 export default function EditAvatar() {
-  const avatarRef = useRef();
-    const { onUpdateAvatar } = useContext(CurrentUserContext);  
+  const [avatarLink, setAvatarLink] = useState('');
+  const { handleUpdateAvatar } = useContext(CurrentUserContext);
+  const [isFormValid, setIsFormValid] = useState(false);
+  const { onUpdateAvatar } = useContext(CurrentUserContext); 
+
+  useEffect(() => {  
+    setIsFormValid(avatarLink.trim().length > 0);  
+  }, [avatarLink]);
+
+  const handleAvatarChange = (event) => {  
+    setAvatarLink(event.target.value);  
+  };
   
-    function handleSubmit(e) {  
-        e.preventDefault();  
-          
-        onUpdateAvatar({  
-            avatar: avatarRef.current.value,  
-        });  
-    }
+  const handleSubmit = (event) => {  
+    event.preventDefault();  
+    if (isFormValid) {  
+      handleUpdateAvatar(avatarLink);  
+    }  
+  };
 
     return (
         <form
@@ -27,10 +36,14 @@ export default function EditAvatar() {
           className="popup__input popup__input_avatar"
           placeholder="Enlace a la imagen"
           required
-          ref={avatarRef}
+          value={avatarLink}  
+          onChange={handleAvatarChange}
         />
         <span className="popup__error avatar-error"></span>
-        <button type="submit" className="popup__button" disabled>
+        <button 
+        type="submit" 
+        className="popup__button" 
+        disabled={!isFormValid}>
           Guardar
         </button>
       </form>

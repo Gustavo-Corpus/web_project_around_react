@@ -23,16 +23,19 @@ class Api {
     }).then(this._checkResponse);
   }
 
-  setUserInfo(name, about) {
+  setUserInfo({ name, about }) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
-      body: JSON.stringify({
-        name,
-        about,
-      }),
-    }).then(this._checkResponse);
-  }
+      body: JSON.stringify({ name, about })
+    })
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error: ${res.status}`);
+    });
+}
 
   addCard(data) {
     return fetch(`${this._baseUrl}/cards`, {

@@ -15,7 +15,7 @@ export default function Main({
   cards,     
   onCardLike,     
   onCardDelete,    
-  onAddPlace
+  handleAddPlaceSubmit
 }) {
   const { currentUser } = useContext(CurrentUserContext);
 
@@ -55,7 +55,7 @@ export default function Main({
           type="button"  
           onClick={() => onOpenPopup({  
             title: "Nuevo lugar",  
-            children: <NewCard onAddPlace={onAddPlace} />  
+            children: <NewCard handleAddPlaceSubmit={handleAddPlaceSubmit} />  
           })}
         ></button>
       </section>
