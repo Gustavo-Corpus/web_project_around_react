@@ -7,15 +7,14 @@ import EditProfile from "./components/Form/EditProfile/editProfile";
 import EditAvatar from "./components/Form/EditAvatar/editAvatar";
 import Card from "./components/Card/card";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import api from "../../utils/api";
 
 export default function Main({ 
-  onOpenPopup, 
-  onClosePopup, 
-  popup,   
-  cards,   
-  onCardLike,   
-  onCardDelete,  
+  onOpenPopup,   
+  onClosePopup,   
+  popup,     
+  cards,     
+  onCardLike,     
+  onCardDelete,    
   onAddPlace
 }) {
   const { currentUser } = useContext(CurrentUserContext);
@@ -62,14 +61,13 @@ export default function Main({
       </section>
       <section className="elements">  
         {cards.map((card) => (  
-          <Card   
-            key={card._id}   
-            card={card}   
-            handleOpenPopup={onOpenPopup}  
-            onCardLike={onCardLike}  
-            onCardDelete={onCardDelete}  
-            isLiked={card.isLiked}
-          />  
+          <Card     
+            key={card._id}     
+            card={card}     
+            handleOpenPopup={onOpenPopup}    
+            onCardLike={onCardLike}    
+            onCardDelete={onCardDelete}    
+        />  
         ))}  
       </section>
       {popup && (  
